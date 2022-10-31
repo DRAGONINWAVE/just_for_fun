@@ -25,13 +25,15 @@ def rename(old_names, standard_names, path):
     i = 0
     j = 0
     name1 = []
+    handled = []
     for name in m:
         j = 0
         for names in standard_names.学号.values:
             # i =
             if names == name:
                 name1.append(
-                    str(standard_names.学号[j])+standard_names.姓名[j]+n[i])
+                    str(standard_names.学号[j])+"-"+standard_names.姓名[j]+"-" + "环境生物物理学作业2"+n[i])
+                handled.append(standard_names.姓名[j])
             j = j + 1
         i = i + 1
     i = 0
@@ -40,12 +42,20 @@ def rename(old_names, standard_names, path):
         data = os.path.join(path, old_names[i])
         # print(data)
         new_name = os.path.join(path, name)
-        # print(data, new_name)
+        print(data, new_name)
         os.rename(data, new_name)
         i = i + 1
         # print(old_names[0])
 
-    return print(name1)
+    return handled
+
+
+def not_handled(new, standard_names):
+    heihei = []
+    for name in standard_names:
+        if name not in new:
+            heihei.append(name)
+    return heihei
 
 
 def main():
@@ -53,19 +63,13 @@ def main():
     standard_names = pd.read_excel(
         r"C:\Users\Administrator\Desktop\2022级应用气象名单(终).xlsx")
     # 读取需要修改的文件名
-    filepath = r"C:\Users\Administrator\Desktop\英语作业练手"
+    filepath = r"C:\Users\Administrator\Desktop\作业练手"
     old_names = os.listdir(filepath)
-    rename(old_names, standard_names, filepath)
+    new = rename(old_names, standard_names, filepath)
+    print(len(new))
+    heihei = not_handled(new, standard_names.姓名)
+    print(heihei)
 
 
 if __name__ == '__main__':
     main()
-
-    # print(name1)
-    # for name in name1:
-    #     print(pattern.findall(name))
-    #     #     # data = os.path.join(filepath, old_names[0])
-    #     #     # new_name = os.path.join(filepath, "test")
-    #     #     # os.rename(data, new_name)
-    #     #     # print(old_names[0])
-    #     # main()
