@@ -9,7 +9,7 @@ def rename(old_names, standard_names, path):
     # 用正则表达式匹配连续的十二个数字（学号）
     pattern = re.compile(r"\d{12}")
     # 用正则表达式匹配文件类型（其实自己直接枚举出来的）
-    pattern1 = re.compile(r".(.doc|.pdf|.docx)$")
+    pattern1 = re.compile(r".(.doc|.pdf|.docx|.zip|.rar)$")
     # 匹配两种学号和文件类型
     m = []
     n = []
@@ -32,7 +32,7 @@ def rename(old_names, standard_names, path):
             # i =
             if names == name:
                 name1.append(
-                    str(standard_names.学号[j])+"-"+standard_names.姓名[j]+"-" + "环境生物物理学作业2"+n[i])
+                    str(standard_names.学号[j])+"-"+standard_names.姓名[j]+"-" + "英语作业3"+n[i])
                 handled.append(standard_names.姓名[j])
             j = j + 1
         i = i + 1
@@ -63,7 +63,7 @@ def main():
     standard_names = pd.read_excel(
         r"C:\Users\Administrator\Desktop\2022级应用气象名单(终).xlsx")
     # 读取需要修改的文件名
-    filepath = r"C:\Users\Administrator\Desktop\作业练手"
+    filepath = r"C:\Users\Administrator\Desktop\英语作业3test"
     old_names = os.listdir(filepath)
     new = rename(old_names, standard_names, filepath)
     print(len(new))
