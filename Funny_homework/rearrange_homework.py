@@ -32,7 +32,7 @@ def rename(old_names, standard_names, path):
             # i =
             if names == name:
                 name1.append(
-                    str(standard_names.学号[j])+"-"+standard_names.姓名[j]+"-" + "英语作业3"+n[i])
+                    str(standard_names.学号[j])+"-"+standard_names.姓名[j]+"-" + "环境生物物理学作业（中文3）"+n[i])
                 handled.append(standard_names.姓名[j])
             j = j + 1
         i = i + 1
@@ -42,7 +42,10 @@ def rename(old_names, standard_names, path):
         data = os.path.join(path, old_names[i])
         # print(data)
         new_name = os.path.join(path, name)
-        print(data, new_name)
+        # print(data, new_name)
+        if pattern.findall(data) != pattern.findall(new_name):
+            print(data)
+            break
         os.rename(data, new_name)
         i = i + 1
         # print(old_names[0])
@@ -63,7 +66,7 @@ def main():
     standard_names = pd.read_excel(
         r"C:\Users\Administrator\Desktop\2022级应用气象名单(终).xlsx")
     # 读取需要修改的文件名
-    filepath = r"C:\Users\Administrator\Desktop\英语作业3test"
+    filepath = r"C:\Users\Administrator\Desktop\环境生物物理中文3test"
     old_names = os.listdir(filepath)
     new = rename(old_names, standard_names, filepath)
     print(len(new))
