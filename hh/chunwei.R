@@ -4,3 +4,9 @@ plot(impurity ~ rate)
 reg <- lm(impurity ~ rate)
 abline(reg, col = "red")
 summary(reg)
+par()
+mfrowl <- par(mfrow = c(2, 3))
+for (i in 1:6)
+{
+    plot(c(1:i), main = paste("I'm image: ", i))
+}
