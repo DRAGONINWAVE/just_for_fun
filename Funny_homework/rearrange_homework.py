@@ -32,7 +32,7 @@ def rename(old_names, standard_names, path):
             # i =
             if names == name:
                 name1.append(
-                    str(standard_names.学号[j])+"-"+standard_names.姓名[j]+"-"+"2022级应用气象-气象日推文"+n[i])
+                    str(standard_names.学号[j])+"-"+standard_names.姓名[j]+n[i])
                 handled.append(standard_names.姓名[j])
             j = j + 1
         i = i + 1
@@ -64,9 +64,9 @@ def not_handled(new, standard_names):
 def main():
     # 读取标准的名单
     standard_names = pd.read_excel(
-        r"C:\Users\Administrator\Desktop\2022级应用气象名单(终).xlsx")
+        r"/mnt/hgfs/C/Users/Administrator/Desktop/2022级应用气象名单(终).xlsx")
     # 读取需要修改的文件名
-    filepath = r"C:\Users\Administrator\Desktop\推文"
+    filepath = r"/mnt/hgfs/C/Users/Administrator/Desktop/学科前沿ok"
     old_names = os.listdir(filepath)
     new = rename(old_names, standard_names, filepath)
     print(len(new))
@@ -74,5 +74,6 @@ def main():
     print(heihei)
 
 
+# /mnt/hgfs/D/just_for_fun/Funny_homework/rearrange_homework.py
 if __name__ == '__main__':
     main()
